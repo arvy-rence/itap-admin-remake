@@ -1,6 +1,6 @@
 const data = [
   {
-    id: 'Children (0-14)',
+    id: 'Children (12-14)',
     label: 'Children',
     value: 379,
     color: '#80c993',
