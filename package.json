@@ -6,11 +6,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@nivo/core": "^0.80.0",
+    "@nivo/line": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
+    "axios": "^1.2.5",
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.3.7",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
