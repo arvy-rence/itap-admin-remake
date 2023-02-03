@@ -107,6 +107,60 @@ const data = [
       },
     ],
   },
+  {
+    id: 'LGBTQIA+',
+    color: '#025AAF',
+    data: [
+      {
+        x: 'JAN',
+        y: 15,
+      },
+      {
+        x: 'FEB',
+        y: 32,
+      },
+      {
+        x: 'MAR',
+        y: 78,
+      },
+      {
+        x: 'APR',
+        y: 45,
+      },
+      {
+        x: 'MAY',
+        y: 63,
+      },
+      {
+        x: 'JUN',
+        y: 41,
+      },
+      {
+        x: 'JUL',
+        y: 50,
+      },
+      {
+        x: 'AUG',
+        y: 72,
+      },
+      {
+        x: 'SEP',
+        y: 135,
+      },
+      {
+        x: 'OCT',
+        y: 63,
+      },
+      {
+        x: 'NOV',
+        y: 54,
+      },
+      {
+        x: 'DEC',
+        y: 60,
+      },
+    ],
+  },
 ]
 
 export default data
