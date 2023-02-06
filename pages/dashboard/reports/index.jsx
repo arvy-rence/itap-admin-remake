@@ -103,7 +103,7 @@ export default function ReportsPage({
 export async function getServerSideProps() {
   const { data } = await axios.get('/user/gender/count')
   const { data: patronToday } = await axios.get('/visitorlog/today')
-  const { data: topBarangay } = await axios.get('/user/info/barangay')
+  const { data: topBarangay } = await axios.get('/visitorlog/barangay-per-month')
   const { data: ageGroups } = await axios.get('/user/info/agegroup')
   const { data: genderAnalytics } = await axios.get('/visitorlog/gender-per-month')
   let total = 0
