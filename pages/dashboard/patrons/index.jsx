@@ -27,7 +27,6 @@ export default function PatronsPage({ data }) {
             error: 'Error Disabling Users',
           },
           {
-            icon: '✅',
             position: 'top-right',
             duration: 3000,
             className: 'font-inter',
