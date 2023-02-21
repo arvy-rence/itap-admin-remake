@@ -15,8 +15,13 @@ export default function ReportsPage({
   topBarangay,
   ageGroups,
   genderAnalytics,
+  logPerLocation,
 }) {
   const currentMonth = new Date().toLocaleString('default', { month: 'long' }).toUpperCase()
+  const [dateSelected, setDateSelected] = React.useState(new Date())
+
+  React.useEffect(() => {}, [])
+
   return (
     <div className='font-inter flex flex-col justify-center items-center pb-5'>
       <h1 className='text-4xl font-bold text-primary pb-5'>iTap Report Dashboard</h1>
@@ -79,8 +84,8 @@ export default function ReportsPage({
         <div className='h-[400px] w-full flex gap-5'>
           <Card className='h-[100%] w-2/5 flex flex-col'>
             <h1 className='text-primary text-2xl font-bold'>TOP 5 BARANGAY VISITORS</h1>
-            <h2 className='text-primary text-lg opacity-70'>(FOR THE MONTH OF {currentMonth})</h2>
-            <ol className='list-decimal'>
+            <h2 className='text-primary opacity-70'>(FOR THE MONTH OF {currentMonth})</h2>
+            <ol className='list-decimal -m-3'>
               {topBarangay.map((barangay, index) => {
                 return (
                   <li className='text-primary text-lg ml-12' key={index}>
@@ -95,6 +100,34 @@ export default function ReportsPage({
             <PieChart data={ageGroups} />
           </Card>
         </div>
+
+        <div className='flex items-center justify-between gap-2'>
+          <h2 className='text-primary text-3xl font-bold'>LOGS PER LOCATION</h2>
+        </div>
+
+        <div className='h-[200px] w-full flex gap-5 justify-evenly'>
+          <Card className='bg-primary text-white flex-col w-full'>
+            <span className='flex text-2xl items-center font-bold gap-3 justify-center'>
+              <TbUserCircle />
+              <span>ENTRANCE</span>
+            </span>
+            <span className='text-2xl text-center'>{logPerLocation.entrance}</span>
+          </Card>
+          <Card className='bg-primary text-white flex-col w-full'>
+            <span className='flex text-2xl items-center font-bold gap-3 justify-center'>
+              <TbUserCircle />
+              <span>CHILDREN'S AREA</span>
+            </span>
+            <span className='text-2xl text-center'>{logPerLocation.childrensArea}</span>
+          </Card>
+          <Card className='bg-primary text-white flex-col w-full'>
+            <span className='flex text-2xl items-center font-bold gap-3 justify-center'>
+              <TbUserCircle />
+              <span>GENERAL COLLECTIONS</span>
+            </span>
+            <span className='text-2xl text-center'>{logPerLocation.generalCollections}</span>
+          </Card>
+        </div>
       </div>
     </div>
   )
@@ -103,23 +136,29 @@ export default function ReportsPage({
 export async function getServerSideProps() {
   const { data } = await axios.get('/user/gender/count')
   const { data: patronToday } = await axios.get('/visitorlog/today')
-  const { data: topBarangay } = await axios.get('/visitorlog/barangay-per-month')
+  let { data: topBarangay } = await axios.get('/visitorlog/barangay-per-month')
   const { data: ageGroups } = await axios.get('/user/info/agegroup')
   const { data: genderAnalytics } = await axios.get('/visitorlog/gender-per-month')
+  const { data: logPerLocation } = await axios.post('/visitorlog/log-per-location', {
+    date: new Date(),
+  })
   let total = 0
   // sum values of object
   for (const key in data.data) {
     total += data.data[key]
   }
+
+  topBarangay = topBarangay.data.slice(0, 10)
   console.log(total)
   return {
     props: {
       data: data.data,
       total: total,
       today: patronToday.data,
-      topBarangay: topBarangay.data,
+      topBarangay: topBarangay,
       ageGroups: ageGroups.data,
       genderAnalytics: genderAnalytics.data,
+      logPerLocation: logPerLocation.data,
     },
   }
 }
