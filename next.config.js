@@ -6,12 +6,12 @@ module.exports = {
       {
         source: '/',
         destination: '/dashboard/reports',
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/dashboard',
         destination: '/dashboard/reports',
-        permanent: true,
+        permanent: false,
       },
     ]
   }
