@@ -83,7 +83,7 @@ export default function ReportsPage({
 
         <div className='h-[400px] w-full flex gap-5'>
           <Card className='h-[100%] w-2/5 flex flex-col'>
-            <h1 className='text-primary text-2xl font-bold'>TOP 5 BARANGAY VISITORS</h1>
+            <h1 className='text-primary text-2xl font-bold'>TOP 10 BARANGAY VISITORS</h1>
             <h2 className='text-primary opacity-70'>(FOR THE MONTH OF {currentMonth})</h2>
             <ol className='list-decimal -m-3'>
               {topBarangay.map((barangay, index) => {
