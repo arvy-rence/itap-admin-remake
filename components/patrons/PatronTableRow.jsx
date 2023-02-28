@@ -20,16 +20,13 @@ export default function PatronTableRow({ handleCheck, data, seq }) {
         <Table.Cell>
           <input type='checkbox' onChange={(e) => handleCheck(e, data.id)} />
         </Table.Cell>
-        <Table.Cell className=''>{id}</Table.Cell>
         <Table.Cell
           className={`whitespace-nowrap font-medium text-gray-900 dark:text-white ${
             data.is_active ? 'text-green-600' : 'text-red-600'
           }`}
         >
-          {data.full_name}
+          {data.full_name.toUpperCase()}
         </Table.Cell>
-        <Table.Cell>{classifyGender(data.sex_int)}</Table.Cell>
-        <Table.Cell>{data.birthday}</Table.Cell>
         <Table.Cell className='whitespace-nowrap'>{`${data.province}, ${data.city} ${data.barangay}`}</Table.Cell>
         <Table.Cell>{data.email}</Table.Cell>
         <Table.Cell>{data.contact_number}</Table.Cell>

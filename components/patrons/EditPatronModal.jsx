@@ -48,10 +48,6 @@ export default function EditPatronModal({ data }) {
     handleReset()
   }, [isOpen])
 
-  React.useEffect(() => {
-    console.log(requestData)
-  }, [requestData])
-
   function handleReset() {
     setFullName(data.full_name)
     setBirthday(data.birthday)

@@ -9,10 +9,7 @@ export default function PatronTable({ data }) {
 
   const tableHeaders = [
     '',
-    'ID',
     'Full Name',
-    'Gender',
-    'Birthday',
     'Address',
     'Email',
     'Contact Number',
@@ -28,9 +25,6 @@ export default function PatronTable({ data }) {
     }
   }
 
-  React.useEffect(() => {
-    console.log(checked)
-  }, [checked])
   return (
     <>
       <Table>
