@@ -150,7 +150,7 @@ export default function PatronsPage({ data }) {
 }
 
 export async function getServerSideProps() {
-  const { data } = await axios.get('/user')
+  const { data } = await axios.get('/user?token=adminpanel')
 
   return {
     props: {
